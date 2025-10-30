@@ -10,7 +10,7 @@ export function Hero({ onWaitlistClick }: HeroProps) {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=2400&q=80"
+          src="https://images.squarespace-cdn.com/content/v1/63e2d1331365f23d2862b5c3/b753fc9a-6a0e-4692-8cfc-1b1568a74ee0/AA204CAD-2A76-432D-B06D-D1DB7D7B1530+-+Julia+Joy+Jruck%40UW.Edu.jpeg"
           alt="Students connecting on campus"
           className="h-full w-full object-cover"
         />
