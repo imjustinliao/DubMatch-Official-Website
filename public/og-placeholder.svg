@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A68CF1" />
+      <stop offset="100%" stop-color="#F8BBD0" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <g fill="#ffffff" opacity="0.2">
+    <circle cx="240" cy="180" r="90" />
+    <circle cx="980" cy="140" r="120" />
+    <circle cx="860" cy="520" r="110" />
+  </g>
+  <text x="100" y="320" font-size="72" font-family="Inter, 'SF Pro Display', sans-serif" fill="#0f172a" font-weight="600">
+    DubMatch
+  </text>
+  <text x="100" y="400" font-size="40" font-family="Inter, 'SF Pro Display', sans-serif" fill="#0f172a" opacity="0.8">
+    Meet your crush IRL • Launching Valentine’s Day 2026
+  </text>
+</svg>
