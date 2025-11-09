@@ -4,8 +4,8 @@
 
 :root {
   font-family: "Inter", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  color: #0f172a;
-  background-color: #ffffff;
+  color: #fff5f7;
+  background-color: #0f0308;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14,9 +14,14 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.08), transparent 55%),
-    radial-gradient(circle at 80% 10%, rgba(147, 51, 234, 0.12), transparent 45%),
-    linear-gradient(to bottom, #ffffff, #f8fafc);
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.55), transparent 42%),
+    radial-gradient(circle at 70% 15%, rgba(188, 138, 255, 0.4), transparent 45%),
+    radial-gradient(circle at 25% 80%, rgba(255, 129, 152, 0.55), transparent 48%),
+    radial-gradient(circle at 85% 70%, rgba(255, 190, 122, 0.4), transparent 45%),
+    radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.15), transparent 60%),
+    radial-gradient(circle at 90% 35%, rgba(255, 214, 165, 0.25), transparent 55%),
+    linear-gradient(140deg, #190012, #4c0727 35%, #28105a 75%, #f6c8ff 120%);
   color: inherit;
 }
 
@@ -43,7 +48,7 @@ html {
 
 @layer components {
   .field-input {
-    @apply w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-lg transition-all focus:border-purple-500/50 focus:outline-none focus:ring-4 focus:ring-purple-500/20 placeholder:text-slate-400;
+    @apply w-full rounded-2xl border border-[rgba(255,224,232,0.7)] bg-white/90 px-4 py-3 text-sm text-[#4f0b19] shadow-lg transition focus:border-[rgba(255,151,176,1)] focus:outline-none focus:ring-4 focus:ring-[rgba(250,217,227,0.5)] placeholder:text-[#c46a8a];
   }
 }
 
@@ -61,15 +66,194 @@ html {
 /* Enhanced shadow utilities */
 @layer utilities {
   .shadow-soft {
-    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.1), 0 4px 16px -4px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 25px 65px -30px rgba(40, 9, 20, 0.65), 0 45px 90px -45px rgba(9, 6, 10, 0.8);
   }
-  
+
   .shadow-card {
-    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.12), 0 8px 24px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 70px -45px rgba(15, 6, 11, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.45);
   }
-  
+
   .shadow-inner-soft {
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: inset 0 2px 18px rgba(15, 10, 18, 0.35);
+  }
+
+  .glass-panel {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-bottom-color: rgba(255, 255, 255, 0.35);
+    border-right-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(30px) saturate(130%);
+    box-shadow: 0 30px 70px -35px rgba(50, 13, 25, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 35px rgba(244, 114, 182, 0.45);
+  }
+
+  .ambient-field {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .ambient-stars span {
+    position: absolute;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+    animation: starTwinkle 6s ease-in-out infinite, starDrift 22s linear infinite;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+  }
+
+  .ambient-hearts span {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    transform: translate(-50%, -50%) scale(var(--heart-scale, 1)) rotate(45deg);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 138, 162, 0.45));
+    border-radius: 4px;
+    animation: heartPulse 7s ease-in-out infinite;
+  }
+
+  .ambient-hearts span::before,
+  .ambient-hearts span::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: inherit;
+  }
+
+  .ambient-hearts span::before {
+    left: -9px;
+  }
+
+  .ambient-hearts span::after {
+    top: -9px;
+  }
+
+  .ambient-waves span {
+    position: absolute;
+    width: 45%;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    filter: blur(0.5px);
+    animation: waveFlow 12s ease-in-out infinite;
+    opacity: 0.45;
   }
 }
 
+@keyframes starTwinkle {
+  0% {
+    transform: scale(0.7) translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1) translateY(-6px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.7) translateY(0);
+    opacity: 0.4;
+  }
+}
+
+@keyframes starDrift {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heartPulse {
+  0% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(calc(var(--heart-scale, 1) * 0.8)) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(calc(var(--heart-scale, 1) * 1.05)) rotate(45deg);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(calc(var(--heart-scale, 1) * 0.8)) rotate(45deg);
+  }
+}
+
+@keyframes waveFlow {
+  0% {
+    transform: translateX(-10%) scaleX(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(10%) scaleX(1.05);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(-10%) scaleX(1);
+    opacity: 0.2;
+  }
+}
+
+.cursor-ripple {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 0;
+  height: 0;
+}
+
+.cursor-ripple__glow,
+.cursor-ripple__dot,
+.cursor-ripple__ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-ripple__glow {
+  width: 320px;
+  height: 320px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.18), rgba(255, 192, 203, 0));
+  filter: blur(30px);
+  opacity: 0.85;
+}
+
+.cursor-ripple__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #fff5f7;
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.85);
+}
+
+.cursor-ripple__ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  animation: cursorRing 1.6s ease-out infinite;
+}
+
+@keyframes cursorRing {
+  0% {
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  70% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}

@@ -5,8 +5,14 @@ type NavbarProps = {
   onWaitlistClick: () => void
 }
 
+const navLinks = [
+  { path: '/', label: 'Home' },
+  { path: '/contact', label: 'Contact' },
+  { path: '/about', label: 'About' },
+]
+
 const navLinkClasses =
-  'text-sm font-medium text-slate-700 transition-all hover:text-slate-900'
+  'rounded-full px-4 py-2 text-sm font-semibold text-white/80 transition-all hover:text-white'
 
 export function Navbar({ onWaitlistClick }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -19,53 +25,62 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
   }, [])
 
   return (
-    <header
-      className={`sticky top-0 z-40 w-full transition-all ${
-        isScrolled ? 'bg-white/80 shadow-lg shadow-black/5 backdrop-blur-xl' : 'bg-white/50 backdrop-blur-lg'
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-8">
+    <header className="sticky top-0 z-40 flex w-full justify-center px-4 pb-4 pt-4">
+      <div
+        className={`glass-panel flex w-full max-w-6xl items-center justify-between rounded-[999px] border border-white/30 px-6 py-3 transition-all duration-300 ${
+          isScrolled ? 'shadow-soft' : 'shadow-card'
+        }`}
+      >
         <Link to="/" className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-purple-600 text-sm font-bold text-white shadow-lg transition-transform hover:scale-105">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-fuchsia-400 via-[#f2789a] to-orange-200 text-base font-black text-slate-900 shadow-soft">
             DM
           </div>
-          <span className="text-lg font-bold text-slate-900">DubMatch</span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-lg font-semibold text-slate-900">DubMatch</span>
+            <span className="text-xs uppercase tracking-[0.35em] text-[#5c1022b3]">Campus IRL</span>
+          </div>
         </Link>
-        <nav className="hidden items-center gap-8 md:flex">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              `${navLinkClasses} ${isActive ? 'font-semibold' : ''}`
-            }
+        <div className="flex items-center gap-3">
+          <nav className="hidden items-center gap-1 rounded-full border border-white/30 bg-white/10 px-2 py-1 text-white shadow-card backdrop-blur md:flex">
+            {navLinks.map(({ path, label }) => (
+              <NavLink
+                key={path}
+                to={path}
+                className={({ isActive }) =>
+                  `${navLinkClasses} ${
+                    isActive
+                      ? 'bg-white/20 text-white shadow-inner-soft'
+                      : 'text-white/70'
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+          <div className="flex items-center gap-2 md:hidden">
+            {navLinks.map(({ path, label }) => (
+              <NavLink
+                key={path}
+                to={path}
+                className={({ isActive }) =>
+                  `text-xs font-semibold uppercase tracking-wide text-white/50 ${
+                    isActive ? 'text-white' : ''
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={onWaitlistClick}
+            className="rounded-full border border-white/60 bg-white px-5 py-2.5 text-sm font-semibold text-[#4b0c1c] shadow-[0_8px_22px_rgba(255,255,255,0.35)] transition hover:-translate-y-[1px] hover:text-[#ffd89c] hover:shadow-[0_14px_30px_rgba(255,255,255,0.6)]"
           >
-            Home
-          </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              `${navLinkClasses} ${isActive ? 'font-semibold' : ''}`
-            }
-          >
-            About
-          </NavLink>
-        </nav>
-        <NavLink
-          to="/about"
-          className={({ isActive }) =>
-            `mr-3 text-sm font-medium text-slate-700 transition-all hover:text-slate-900 md:hidden ${
-              isActive ? 'font-semibold' : ''
-            }`
-          }
-        >
-          About
-        </NavLink>
-        <button
-          type="button"
-          onClick={onWaitlistClick}
-          className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-all hover:scale-105 hover:bg-slate-800 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
-        >
-          Join Waitlist
-        </button>
+            Join Waitlist
+          </button>
+        </div>
       </div>
     </header>
   )

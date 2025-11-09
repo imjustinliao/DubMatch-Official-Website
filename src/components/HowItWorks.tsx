@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { AmbientField } from './AmbientField'
 
 const steps = [
   {
@@ -18,75 +18,44 @@ const steps = [
   },
 ] as const
 
-export function HowItWorks() {
-  const [activeStep, setActiveStep] = useState(0)
+const stepKeywords = ['VERIFY', 'DISCOVER', 'MEET'] as const
 
+export function HowItWorks() {
   return (
-    <section className="bg-gradient-to-b from-white via-slate-50 to-white py-20 md:py-28" data-animate>
-      <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-5xl">
-            How DubMatch Works
+    <section className="relative isolate px-4 py-24" data-animate>
+      <AmbientField variant="rose" />
+      <div className="relative mx-auto max-w-6xl px-2 md:px-4">
+        <div className="mx-auto max-w-2xl text-center text-white">
+          <span className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/80">
+            How it works
+          </span>
+          <h2 className="mt-6 text-3xl font-semibold tracking-tight md:text-5xl">
+            Three deliberate moves to stage the meet-up.
           </h2>
-          <p className="mt-4 text-lg text-slate-600 md:text-xl">
-            Real connections, powered by AI.
+          <p className="mt-4 text-lg text-slate-300 md:text-xl">
+            Inspired by Dieter Rams: simple, honest, and purposeful.
           </p>
         </div>
 
-        {/* Step Numbers */}
-        <div className="mt-16 flex justify-center gap-4">
+        <div className="mt-16 grid gap-8 md:grid-cols-3">
           {steps.map((step, index) => (
-            <button
+            <article
               key={step.number}
-              onClick={() => setActiveStep(index)}
-              className={`group flex h-16 w-16 items-center justify-center rounded-full text-2xl font-bold shadow-lg transition-all duration-300 md:h-20 md:w-20 md:text-3xl ${
-                activeStep === index
-                  ? 'scale-110 bg-gradient-to-br from-rose-500 to-purple-600 text-white shadow-xl shadow-purple-500/30'
-                  : 'bg-white text-slate-400 hover:scale-105 hover:bg-slate-50 hover:text-slate-600'
-              }`}
+              className="group flex h-full flex-col rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.25),_rgba(255,255,255,0.02))] px-8 py-10 text-left text-white shadow-soft transition-all duration-500 hover:-translate-y-2 hover:border-white/40"
             >
-              {step.number}
-            </button>
-          ))}
-        </div>
-
-        {/* Active Step Content */}
-        <div className="mt-12 overflow-hidden">
-          {steps.map((step, index) => (
-            <div
-              key={step.number}
-              className={`transition-all duration-500 ${
-                activeStep === index
-                  ? 'opacity-100 translate-y-0'
-                  : 'absolute opacity-0 -translate-y-4 pointer-events-none'
-              }`}
-            >
-              <article className="mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-8 shadow-2xl md:p-12">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-purple-600 text-2xl font-bold text-white shadow-lg">
-                    {step.number}
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-900 md:text-3xl">{step.title}</h3>
+              <div className="flex flex-col items-center text-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/40 bg-white/30 text-2xl font-semibold text-[#5c1022] transition group-hover:scale-110">
+                  {step.number}
                 </div>
-                <p className="mt-6 text-lg leading-relaxed text-slate-600 md:text-xl">
-                  {step.description}
-                </p>
-              </article>
-            </div>
-          ))}
-        </div>
-
-        {/* Progress Indicator */}
-        <div className="mt-8 flex justify-center gap-2">
-          {steps.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveStep(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                activeStep === index ? 'w-8 bg-gradient-to-r from-rose-500 to-purple-600' : 'w-2 bg-slate-300'
-              }`}
-              aria-label={`Go to step ${index + 1}`}
-            />
+                <h3 className="mt-6 text-2xl font-semibold text-white">{step.title}</h3>
+              </div>
+              <p className="mt-6 flex-1 text-base leading-relaxed text-slate-200 transition group-hover:text-white">
+                {step.description}
+              </p>
+              <div className="mt-8 text-center text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-slate-400">
+                {stepKeywords[index]}
+              </div>
+            </article>
           ))}
         </div>
       </div>

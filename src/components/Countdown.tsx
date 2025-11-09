@@ -66,23 +66,23 @@ export function Countdown({ targetDate, variant = 'section', className = '' }: C
 
   const baseItemClasses =
     variant === 'hero'
-      ? 'rounded-2xl border border-white/60 bg-white/70 px-3 py-2 text-center shadow-soft backdrop-blur'
-      : 'rounded-3xl border border-white/40 bg-white/70 px-6 py-5 text-center shadow-soft backdrop-blur'
+      ? 'rounded-[26px] border border-white/10 bg-white/10 px-6 py-4 text-center text-white shadow-soft backdrop-blur-xl'
+      : 'rounded-[28px] border border-[rgba(255,240,246,0.2)] bg-gradient-to-b from-[#2a0b16] via-[#1b0a12] to-[#0c0508] px-8 py-6 text-center text-[#fff0f6] shadow-soft'
 
   const valueClasses =
     variant === 'hero'
-      ? 'text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl'
-      : 'text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl'
+      ? 'text-3xl font-semibold tracking-tight text-white md:text-4xl'
+      : 'text-4xl font-semibold tracking-tight text-[#fff0f6] md:text-5xl'
 
   const labelClasses =
     variant === 'hero'
-      ? 'mt-1 text-xs font-medium uppercase tracking-[0.2em] text-slate-500'
-      : 'mt-3 text-sm font-medium uppercase tracking-[0.25em] text-slate-500'
+      ? 'mt-2 text-[0.65rem] font-medium uppercase tracking-[0.35em] text-slate-200'
+      : 'mt-3 text-xs font-medium uppercase tracking-[0.4em] text-[#fcd6e3]'
 
   return (
-    <div className={`flex items-center justify-center gap-3 ${className}`}>
+    <div className={`flex flex-wrap items-center justify-center gap-4 ${className}`}>
       {labels.map(({ value, label }) => (
-        <div key={label} className={`${baseItemClasses} min-w-[72px] md:min-w-[96px]`}>
+        <div key={label} className={`${baseItemClasses} min-w-[82px] md:min-w-[112px]`}>
           <div className={valueClasses}>{timeLeft.completed ? '00' : value}</div>
           <div className={labelClasses}>{label}</div>
         </div>
@@ -90,4 +90,3 @@ export function Countdown({ targetDate, variant = 'section', className = '' }: C
     </div>
   )
 }
-
