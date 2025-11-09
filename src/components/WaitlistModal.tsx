@@ -88,7 +88,7 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
               Join the waitlist
             </p>
             <h2 className="mt-2 text-2xl font-semibold text-slate-900">
-              We&apos;ll reach out before launch
+              Meet your crush during the date of 
             </h2>
           </div>
           <button
@@ -159,25 +159,6 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
                   </option>
                 ))}
               </select>
-            </Field>
-            <Field label="School Name" id="school">
-              <input
-                id="school"
-                name="school"
-                type="text"
-                required
-                placeholder="University of..."
-                className="field-input"
-              />
-            </Field>
-            <Field label="Social Link (optional)" id="social">
-              <input
-                id="social"
-                name="social"
-                type="url"
-                placeholder="Instagram, LinkedIn, etc."
-                className="field-input"
-              />
             </Field>
             {errorMessage ? (
               <p className="text-sm font-medium text-[#be123c]">

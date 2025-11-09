@@ -18,12 +18,11 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-10 border-t border-white/10 bg-gradient-to-b from-transparent via-[rgba(18,4,12,0.4)] to-[#0a0406] px-4 py-12 text-slate-200">
+    <footer className="relative mt-10 border-t border-white/10 bg-[#0a0406]/90 px-4 py-12 text-slate-200">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
         <div className="text-sm">
-          <p className="text-base font-semibold text-white">DubMatch</p>
           <p className="mt-2 text-xs uppercase tracking-[0.25em] text-slate-500">
-            Copyright @C DubMatch 2025 | All rights reserved.
+            Copyright © DubMatch 2025 | All rights reserved.
           </p>
         </div>
         <div className="flex items-center justify-center gap-4">

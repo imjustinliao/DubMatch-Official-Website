@@ -4,8 +4,8 @@
 
 :root {
   font-family: "Inter", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  color: #fff5f7;
-  background-color: #0f0308;
+  color: #fff9fb;
+  background-color: #050204;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,13 +15,13 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.55), transparent 42%),
-    radial-gradient(circle at 70% 15%, rgba(188, 138, 255, 0.4), transparent 45%),
-    radial-gradient(circle at 25% 80%, rgba(255, 129, 152, 0.55), transparent 48%),
-    radial-gradient(circle at 85% 70%, rgba(255, 190, 122, 0.4), transparent 45%),
-    radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.15), transparent 60%),
-    radial-gradient(circle at 90% 35%, rgba(255, 214, 165, 0.25), transparent 55%),
-    linear-gradient(140deg, #190012, #4c0727 35%, #28105a 75%, #f6c8ff 120%);
+    radial-gradient(165% 85% at 12% 12%, rgba(255, 255, 255, 0.55), transparent 55%),
+    radial-gradient(120% 120% at 72% 8%, rgba(155, 135, 255, 0.55), transparent 50%),
+    radial-gradient(140% 120% at 22% 92%, rgba(255, 122, 145, 0.65), transparent 48%),
+    radial-gradient(150% 130% at 88% 70%, rgba(255, 190, 122, 0.5), transparent 52%),
+    radial-gradient(140% 90% at 5% 55%, rgba(93, 8, 26, 0.58), transparent 70%),
+    radial-gradient(160% 140% at 92% 35%, rgba(255, 214, 165, 0.35), transparent 55%),
+    linear-gradient(135deg, #0a000a, #320114 33%, #280840 74%, #ffa1d9 120%);
   color: inherit;
 }
 
@@ -48,7 +48,7 @@ html {
 
 @layer components {
   .field-input {
-    @apply w-full rounded-2xl border border-[rgba(255,224,232,0.7)] bg-white/90 px-4 py-3 text-sm text-[#4f0b19] shadow-lg transition focus:border-[rgba(255,151,176,1)] focus:outline-none focus:ring-4 focus:ring-[rgba(250,217,227,0.5)] placeholder:text-[#c46a8a];
+    @apply w-full rounded-2xl border border-[rgba(255,224,232,0.7)] bg-white/90 px-4 py-3 text-sm text-[#33101d] shadow-lg transition focus:border-[rgba(255,151,176,1)] focus:outline-none focus:ring-4 focus:ring-[rgba(255,255,255,0.65)] placeholder:text-slate-400;
   }
 }
 
@@ -109,10 +109,10 @@ html {
     position: absolute;
     width: 18px;
     height: 18px;
-    transform: translate(-50%, -50%) scale(var(--heart-scale, 1)) rotate(45deg);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 138, 162, 0.45));
+    transform: translate(-50%, -50%) scale(var(--heart-scale, 1)) rotate(var(--heart-rotation, 45deg));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 138, 162, 0.55));
     border-radius: 4px;
-    animation: heartPulse 7s ease-in-out infinite;
+    animation: heartPulse 9s ease-in-out infinite;
   }
 
   .ambient-hearts span::before,
@@ -135,12 +135,13 @@ html {
 
   .ambient-waves span {
     position: absolute;
-    width: 45%;
-    height: 1.5px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-    filter: blur(0.5px);
-    animation: waveFlow 12s ease-in-out infinite;
-    opacity: 0.45;
+    width: 65%;
+    height: 220px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 60%);
+    filter: blur(35px);
+    animation: waveFlow 18s ease-in-out infinite;
+    opacity: 0.55;
   }
 }
 
@@ -173,31 +174,31 @@ html {
 
 @keyframes heartPulse {
   0% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(calc(var(--heart-scale, 1) * 0.8)) rotate(45deg);
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(calc(var(--heart-scale, 1) * 0.75)) rotate(var(--heart-rotation, 45deg));
   }
   50% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(calc(var(--heart-scale, 1) * 1.05)) rotate(45deg);
+    transform: translate(-50%, -50%) scale(calc(var(--heart-scale, 1) * 1.1)) rotate(calc(var(--heart-rotation, 45deg) + 8deg));
   }
   100% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(calc(var(--heart-scale, 1) * 0.8)) rotate(45deg);
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(calc(var(--heart-scale, 1) * 0.75)) rotate(var(--heart-rotation, 45deg));
   }
 }
 
 @keyframes waveFlow {
   0% {
-    transform: translateX(-10%) scaleX(1);
-    opacity: 0.2;
+    transform: translateX(-15%) scaleY(1);
+    opacity: 0.3;
   }
   50% {
-    transform: translateX(10%) scaleX(1.05);
-    opacity: 0.6;
+    transform: translateX(15%) scaleY(1.1);
+    opacity: 0.7;
   }
   100% {
-    transform: translateX(-10%) scaleX(1);
-    opacity: 0.2;
+    transform: translateX(-15%) scaleY(1);
+    opacity: 0.3;
   }
 }
 

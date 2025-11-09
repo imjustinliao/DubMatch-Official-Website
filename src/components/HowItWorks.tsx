@@ -4,12 +4,12 @@ const steps = [
   {
     number: 1,
     title: 'Create your profile',
-    description: 'Verify with your .edu email so we know you share campus spaces.',
+    description: 'Besides basic info and verification, personalize your profile with values, your type, and goals.',
   },
   {
     number: 2,
     title: 'See who\'s nearby',
-    description: 'AI suggests the right moment, place, and icebreakers to meet safely.',
+    description: 'Your AI cupid will match you with your potential crush nearby based on your profile. You may be specific as possible (eg. big eyes, tall, athletic).',
   },
   {
     number: 3,
@@ -30,11 +30,8 @@ export function HowItWorks() {
             How it works
           </span>
           <h2 className="mt-6 text-3xl font-semibold tracking-tight md:text-5xl">
-            Three deliberate moves to stage the meet-up.
+            No more endless swiping. 
           </h2>
-          <p className="mt-4 text-lg text-slate-300 md:text-xl">
-            Inspired by Dieter Rams: simple, honest, and purposeful.
-          </p>
         </div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-3">
@@ -49,7 +46,7 @@ export function HowItWorks() {
                 </div>
                 <h3 className="mt-6 text-2xl font-semibold text-white">{step.title}</h3>
               </div>
-              <p className="mt-6 flex-1 text-base leading-relaxed text-slate-200 transition group-hover:text-white">
+              <p className="mt-6 flex-1 text-base leading-relaxed text-slate-200 text-center transition group-hover:text-white">
                 {step.description}
               </p>
               <div className="mt-8 text-center text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-slate-400">

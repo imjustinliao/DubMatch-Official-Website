@@ -38,6 +38,15 @@ export function Contact() {
               className="field-input mt-3"
             />
           </label>
+          <label className="mt-6 block text-sm font-semibold text-white/70">
+            Message
+            <textarea
+              name="message"
+              rows={5}
+              placeholder="Questions, ambassador interest, partnerships, investment..."
+              className="field-input mt-3 min-h-[140px] resize-none"
+            />
+          </label>
           <button
             type="submit"
             className="mt-8 w-full rounded-full bg-white/90 px-8 py-4 text-sm font-semibold text-slate-900 shadow-soft transition hover:bg-white"

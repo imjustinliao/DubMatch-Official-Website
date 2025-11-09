@@ -76,11 +76,12 @@ export function AmbientField({ variant = 'rose' }: AmbientFieldProps) {
       </div>
       <div className="ambient-hearts">
         {hearts.map((heart) => {
-          const style: CSSProperties & { '--heart-scale': string } = {
+          const style: CSSProperties & { '--heart-scale': string; '--heart-rotation': string } = {
             left: `${(heart * 53) % 100}%`,
             top: `${(heart * 37) % 100}%`,
             animationDelay: `${heart * 1.3}s`,
             '--heart-scale': `${0.8 + ((heart % 5) * 0.15)}`,
+            '--heart-rotation': `${(heart * 37) % 360}deg`,
           }
           return <span key={`heart-${heart}`} style={style} />
         })}

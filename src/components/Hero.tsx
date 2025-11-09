@@ -21,10 +21,10 @@ export function Hero({ onWaitlistClick }: HeroProps) {
           DubMatch
         </span>
         <h1 className="mt-10 text-5xl font-semibold leading-tight text-white md:text-7xl">
-          Designed for meaningful collisions, not infinite feeds.
+          Meet Your Crush IRL.
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-[#fde5ef] md:text-xl">
-          A campus-only waitlist pairing cinema-grade mood with real-life chemistry. Drop your .edu email and we&apos;ll choreograph the meet-cute.
+        <p className="mt-6 max-w-2xl text-lg text-[#fde5ef] drop-shadow-[0_12px_30px_rgba(0,0,0,0.7)] md:text-xl">
+          Meet DubMatch. A dating app only for college students to meet the love of their lives. We're making in-person, serendipitous dating possible through location & personalized matchmaking.
         </p>
         <button
           type="button"

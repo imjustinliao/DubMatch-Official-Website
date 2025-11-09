@@ -17,7 +17,7 @@ export function Home({ onWaitlistClick }: HomeProps) {
       <HowItWorks />
       <section className="relative isolate px-4 py-24" data-animate>
         <AmbientField variant="ink" />
-        <div className="relative mx-auto max-w-4xl rounded-[48px] border border-white/5 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.2),_rgba(7,2,6,0.85))] px-6 py-20 text-center shadow-card md:px-20">
+        <div className="relative mx-auto max-w-4xl rounded-[48px] border border-white/12 bg-[rgba(12,5,9,0.92)] px-6 py-20 text-center shadow-card backdrop-blur-xl md:px-20">
           <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
             Countdown to Launch
           </h2>

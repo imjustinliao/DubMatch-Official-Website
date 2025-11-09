@@ -5,15 +5,15 @@ const teamMembers = [
   {
     name: 'Justin Liao',
     role: 'Co-founder',
-    initials: 'JL',
-    linkedin: 'https://linkedin.com/in/justinliao',
-    twitter: 'https://twitter.com/justinliao',
+    avatar: '/src/assets/justin.png',
+    linkedin: 'https://www.linkedin.com/in/justin-liao23/',
+    twitter: 'https://x.com/imjustinliao',
   },
   {
     name: 'Andriy Demyanyuk',
     role: 'Co-founder',
-    initials: 'AD',
-    linkedin: 'https://linkedin.com/in/andriydemyanyuk',
+    avatar: '/src/assets/andriy.jpeg',
+    linkedin: 'https://www.linkedin.com/in/andriyd/',
     twitter: 'https://twitter.com/andriydem',
   },
 ] as const
@@ -26,7 +26,7 @@ export function About() {
       <section className="relative px-4 py-24" data-animate>
         <AmbientField variant="rose" />
         <div className="relative mx-auto max-w-4xl">
-          <div className="rounded-[40px] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.15),_rgba(18,5,12,0.85))] px-8 py-12 text-white shadow-soft">
+          <div className="rounded-[40px] border border-white/12 bg-[rgba(12,5,9,0.92)] px-8 py-12 text-white shadow-soft backdrop-blur-xl">
             <div className="mb-8 text-left">
               <h1 className="text-5xl font-semibold tracking-tight md:text-6xl">Memo</h1>
               <div className="mt-4 h-[1px] w-24 bg-white/40" />
@@ -63,12 +63,14 @@ export function About() {
             {teamMembers.map((member) => (
               <article
                 key={member.name}
-                className="group rounded-[32px] border border-white/10 bg-[radial-gradient(circle,_rgba(255,255,255,0.16),_rgba(16,4,8,0.85))] px-8 py-10 text-center text-white shadow-soft"
+                className="group rounded-[32px] border border-white/12 bg-[rgba(15,6,11,0.92)] px-8 py-10 text-center text-white shadow-soft backdrop-blur"
               >
                 <div className="flex flex-col items-center">
-                  <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[rgba(255,224,232,0.6)] bg-white/15 text-3xl font-semibold text-[#5c1022]">
-                    {member.initials}
-                  </div>
+                  <img
+                    src={member.avatar}
+                    alt={member.name}
+                    className="h-24 w-24 rounded-full border border-white/20 object-cover shadow-soft"
+                  />
                   <h3 className="mt-6 text-2xl font-semibold">{member.name}</h3>
                   <p className="mt-2 text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">{member.role}</p>
 
