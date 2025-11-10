@@ -5,6 +5,7 @@ import { Hero } from '../components/Hero'
 import { HowItWorks } from '../components/HowItWorks'
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { useReveal } from '../hooks/useReveal'
+import { ShareLinkButton } from '../components/ShareLinkButton'
 
 const reasons = [
   {
@@ -106,14 +107,17 @@ export function Home({ onWaitlistClick }: HomeProps) {
           <div data-animate>
             <Countdown targetDate="2026-02-14T08:00:00Z" variant="section" className="mt-12" />
           </div>
-          <button
-            type="button"
-            onClick={onWaitlistClick}
-            className="mt-12 inline-flex items-center justify-center rounded-full border border-white/70 bg-white px-10 py-4 text-sm font-semibold text-[#4b0c1c] shadow-[0_12px_30px_rgba(255,255,255,0.35)] transition-all hover:-translate-y-0.5 hover:text-[#ffd89c] hover:shadow-[0_20px_45px_rgba(255,255,255,0.65)]"
-          >
-            <AppleBadge />
-            Join Waitlist
-          </button>
+          <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <button
+              type="button"
+              onClick={onWaitlistClick}
+              className="inline-flex min-w-[190px] items-center justify-center rounded-full border border-white/70 bg-white px-10 py-4 text-sm font-semibold text-[#4b0c1c] shadow-[0_12px_30px_rgba(255,255,255,0.35)] transition-all hover:-translate-y-0.5 hover:text-[#ffd89c] hover:shadow-[0_20px_45px_rgba(255,255,255,0.65)]"
+            >
+              <AppleBadge />
+              Join Waitlist
+            </button>
+            <ShareLinkButton label="Share Link" />
+          </div>
         </div>
       </section>
     </main>

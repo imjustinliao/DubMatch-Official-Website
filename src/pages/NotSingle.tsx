@@ -1,4 +1,6 @@
 import { AmbientField } from '../components/AmbientField'
+import { AppleBadge } from '../components/AppleBadge'
+import { ShareLinkButton } from '../components/ShareLinkButton'
 import { useReveal } from '../hooks/useReveal'
 
 type NotSingleProps = {
@@ -22,7 +24,7 @@ export function NotSingle({ onWaitlistClick }: NotSingleProps) {
               Not everyone on DubMatch is single, and that’s totally okay. We get it, sometimes dating is just more fun when your friends are around.
             </p>
             <p>
-              That’s why we introduced Double & Quad Dates. You can team up with your friends, whether they’re single or already in a relationship, and go on a double or group date together. It makes things way more relaxed, social, and real.
+              That’s why we're introducing Double, Tripple, & Quad Dates. You can team up with your friends, whether they’re single or already in a relationship, and go on a double or group date together. It makes things way more relaxed, social, and real.
             </p>
             <p>
               Instead of awkward one-on-one small talk, you get to hang out, meet new people, and just see where things go. Maybe your friend finds their match, maybe you do, or maybe you all just have a great time together.
@@ -31,13 +33,17 @@ export function NotSingle({ onWaitlistClick }: NotSingleProps) {
               At the end of the day, that’s what DubMatch is about: real people, real vibes, and real moments.
             </p>
           </div>
-          <button
-            type="button"
-            onClick={onWaitlistClick}
-            className="mt-10 inline-flex items-center justify-center rounded-full border border-white/70 bg-white px-10 py-4 text-sm font-semibold text-[#4b0c1c] shadow-[0_12px_30px_rgba(255,255,255,0.35)] transition hover:-translate-y-0.5 hover:text-[#ffd89c] hover:shadow-[0_20px_45px_rgba(255,255,255,0.65)]"
-          >
-            Join Waitlist
-          </button>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <button
+              type="button"
+              onClick={onWaitlistClick}
+              className="inline-flex min-w-[190px] items-center justify-center rounded-full border border-white/70 bg-white px-10 py-4 text-sm font-semibold text-[#4b0c1c] shadow-[0_12px_30px_rgba(255,255,255,0.35)] transition hover:-translate-y-0.5 hover:text-[#ffd89c] hover:shadow-[0_20px_45px_rgba(255,255,255,0.65)]"
+            >
+              <AppleBadge />
+              Join Waitlist
+            </button>
+            <ShareLinkButton label="Share Link" />
+          </div>
         </div>
       </section>
     </main>
