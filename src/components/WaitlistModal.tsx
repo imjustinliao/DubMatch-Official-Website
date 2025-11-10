@@ -7,8 +7,7 @@ type WaitlistModalProps = {
   onClose: () => void
 }
 
-const FORMSPREE_ENDPOINT =
-  import.meta.env.VITE_FORMSPREE_ENDPOINT ?? 'https://formspree.io/f/your-form-id'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyzlgvgd'
 
 type SubmissionState = 'idle' | 'submitting' | 'success' | 'error'
 

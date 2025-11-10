@@ -10,7 +10,7 @@ const socialLinks = [
     label: 'TikTok',
   },
   {
-    href: 'mailto:hello@dubmatch.app',
+    href: 'mailto:justinliao3234@gmail.com',
     icon: 'fa-solid fa-envelope',
     label: 'Email',
   },

@@ -1,3 +1,4 @@
+import { AppleBadge } from './AppleBadge'
 import { Countdown } from './Countdown'
 
 type HeroProps = {
@@ -29,8 +30,9 @@ export function Hero({ onWaitlistClick }: HeroProps) {
         <button
           type="button"
           onClick={onWaitlistClick}
-          className="mt-12 rounded-full border border-white/70 bg-white px-10 py-4 text-sm font-semibold tracking-wide text-[#4b0c1c] shadow-[0_12px_30px_rgba(255,255,255,0.35)] transition hover:-translate-y-0.5 hover:text-[#ffd89c] hover:shadow-[0_20px_45px_rgba(255,255,255,0.65)]"
+          className="mt-12 inline-flex items-center rounded-full border border-white/70 bg-white px-10 py-4 text-sm font-semibold tracking-wide text-[#4b0c1c] shadow-[0_12px_30px_rgba(255,255,255,0.35)] transition hover:-translate-y-0.5 hover:text-[#ffd89c] hover:shadow-[0_20px_45px_rgba(255,255,255,0.65)]"
         >
+          <AppleBadge />
           Join Waitlist
         </button>
         <div className="mt-16">

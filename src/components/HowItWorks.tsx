@@ -3,18 +3,18 @@ import { AmbientField } from './AmbientField'
 const steps = [
   {
     number: 1,
-    title: 'Create your profile',
-    description: 'Besides basic info and verification, personalize your profile with values, your type, and goals.',
+    title: 'Curate your profile',
+    description: 'Besides filling basic info, personalize your profile with values, your type (eg. ambitious, athletic), and goals.',
   },
   {
     number: 2,
-    title: 'See who\'s nearby',
-    description: 'Your AI cupid will match you with your potential crush nearby based on your profile. You may be specific as possible (eg. big eyes, tall, athletic).',
+    title: 'Match in real time',
+    description: 'Your AI cupid will match you with your potential crush nearby based on your profile and location.',
   },
   {
     number: 3,
-    title: 'Meet IRL',
-    description: 'Scan to confirm the meetup, then keep the conversation going in-app.',
+    title: 'Meet your crush IRL',
+    description: 'Confirm the meetup, verify meetup spots, and start dating in real life (eg. after class).',
   },
 ] as const
 

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import logo from '../assets/logo.png'
+import { AppleBadge } from './AppleBadge'
 
 type NavbarProps = {
   onWaitlistClick: () => void
@@ -32,9 +34,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
         }`}
       >
         <Link to="/" className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-fuchsia-400 via-[#f2789a] to-orange-200 text-base font-black text-slate-900 shadow-soft">
-            DM
-          </div>
+          <img src={logo} alt="DubMatch" className="h-12 w-12 rounded-2xl object-cover shadow-soft" />
           <div className="flex flex-col leading-tight">
             <span className="text-lg font-semibold text-slate-900">DubMatch</span>
             <span className="text-xs uppercase tracking-[0.35em] text-[#5c1022b3]">Campus IRL</span>
@@ -76,8 +76,9 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
           <button
             type="button"
             onClick={onWaitlistClick}
-            className="rounded-full border border-white/60 bg-white px-5 py-2.5 text-sm font-semibold text-[#4b0c1c] shadow-[0_8px_22px_rgba(255,255,255,0.35)] transition hover:-translate-y-[1px] hover:text-[#ffd89c] hover:shadow-[0_14px_30px_rgba(255,255,255,0.6)]"
+            className="inline-flex items-center rounded-full border border-white/60 bg-white px-5 py-2.5 text-sm font-semibold text-[#4b0c1c] shadow-[0_8px_22px_rgba(255,255,255,0.35)] transition hover:-translate-y-[1px] hover:text-[#ffd89c] hover:shadow-[0_14px_30px_rgba(255,255,255,0.6)]"
           >
+            <AppleBadge />
             Join Waitlist
           </button>
         </div>

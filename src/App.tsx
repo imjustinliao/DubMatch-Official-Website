@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { CursorRipple } from './components/CursorRipple'
+import { AudioToggle } from './components/AudioToggle'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { WaitlistModal } from './components/WaitlistModal'
@@ -38,6 +39,7 @@ export default function App() {
       </div>
       <Footer />
       <WaitlistModal open={isWaitlistOpen} onClose={closeWaitlist} />
+      <AudioToggle />
     </div>
   )
 }

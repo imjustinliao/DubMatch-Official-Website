@@ -1,8 +1,40 @@
+import { useState } from 'react'
 import { AmbientField } from '../components/AmbientField'
 import { useReveal } from '../hooks/useReveal'
 
+const CONTACT_ENDPOINT = 'https://formspree.io/f/xzzypoly'
+
 export function Contact() {
   useReveal()
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [error, setError] = useState('')
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
+    event.preventDefault()
+    setStatus('sending')
+    setError('')
+
+    const formData = new FormData(event.currentTarget)
+
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      })
+
+      if (!response.ok) {
+        throw new Error('Unable to send message')
+      }
+
+      setStatus('success')
+      event.currentTarget.reset()
+    } catch (err) {
+      console.error(err)
+      setStatus('error')
+      setError('Something went wrong. Please email hello@dubmatch.app while we fix this.')
+    }
+  }
 
   return (
     <main className="bg-transparent text-white">
@@ -19,7 +51,11 @@ export function Contact() {
             Send a quick note with your name and email—we&apos;ll get back within 24 hours.
           </p>
         </div>
-        <form className="relative mx-auto mt-12 max-w-xl rounded-[32px] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.2),_rgba(10,3,8,0.9))] px-8 py-10 text-left text-white shadow-soft" data-animate>
+        <form
+          className="relative mx-auto mt-12 max-w-xl rounded-[32px] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.2),_rgba(10,3,8,0.9))] px-8 py-10 text-left text-white shadow-soft"
+          data-animate
+          onSubmit={handleSubmit}
+        >
           <label className="block text-sm font-semibold text-white/70">
             Full Name
             <input
@@ -43,15 +79,20 @@ export function Contact() {
             <textarea
               name="message"
               rows={5}
-              placeholder="Questions, ambassador interest, partnerships, investment..."
+              placeholder="Questions, partnerships, ambassador program, investment..."
               className="field-input mt-3 min-h-[140px] resize-none"
             />
           </label>
+          {error ? <p className="mt-4 text-sm text-rose-200">{error}</p> : null}
+          {status === 'success' ? (
+            <p className="mt-4 text-sm text-lime-200">Thanks! We&apos;ll reply shortly.</p>
+          ) : null}
           <button
             type="submit"
-            className="mt-8 w-full rounded-full bg-white/90 px-8 py-4 text-sm font-semibold text-slate-900 shadow-soft transition hover:bg-white"
+            disabled={status === 'sending'}
+            className="mt-8 w-full rounded-full bg-white/90 px-8 py-4 text-sm font-semibold text-slate-900 shadow-soft transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
           >
-            Submit
+            {status === 'sending' ? 'Sending…' : 'Submit'}
           </button>
         </form>
       </section>
