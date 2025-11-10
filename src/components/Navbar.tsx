@@ -42,8 +42,8 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="DubMatch" className="h-12 w-12 rounded-2xl object-cover shadow-soft" />
           <div className="flex flex-col leading-tight">
-            <span className="text-lg font-semibold text-slate-900">DubMatch</span>
-            <span className="text-xs uppercase tracking-[0.35em] text-[#5c1022b3]">Campus IRL</span>
+            <span className="text-2xl font-semibold text-slate-900">DubMatch</span>
+            {/* <span className="text-xs uppercase tracking-[0.35em] text-[#5c1022b3]"></span> */}
           </div>
         </Link>
         <div className="flex items-center gap-3">
@@ -100,7 +100,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
                 key={path}
                 to={path}
                 className={({ isActive }) =>
-                  `text-xl font-semibold ${isActive ? 'text-white' : 'text-white/70'}`
+                  `text-2xl font-semibold ${isActive ? 'text-white' : 'text-white/70'}`
                 }
               >
                 {label}
@@ -109,7 +109,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
             <button
               type="button"
               onClick={onWaitlistClick}
-              className="mt-4 inline-flex items-center rounded-full border border-white/70 bg-white px-6 py-2 text-sm font-semibold text-[#4b0c1c]"
+              className="mt-4 inline-flex items-center rounded-full border border-white/70 bg-white px-8 py-3 text-lg font-semibold text-[#4b0c1c]"
             >
               <AppleBadge />
               Join Waitlist

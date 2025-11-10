@@ -38,7 +38,7 @@ export function Home({ onWaitlistClick }: HomeProps) {
   useEffect(() => {
     const id = window.setInterval(() => {
       setActiveReason((prev) => (prev + 1) % reasons.length)
-    }, 3000)
+    }, 5800)
     return () => window.clearInterval(id)
   }, [])
 
