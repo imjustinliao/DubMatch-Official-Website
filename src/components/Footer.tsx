@@ -1,11 +1,11 @@
 const socialLinks = [
   {
-    href: 'https://instagram.com/dubmatch',
+    href: 'https://www.instagram.com/dubmatch25/',
     icon: 'fa-brands fa-instagram',
     label: 'Instagram',
   },
   {
-    href: 'https://www.tiktok.com/@dubmatch',
+    href: 'https://www.tiktok.com/@dubmatch25',
     icon: 'fa-brands fa-tiktok',
     label: 'TikTok',
   },

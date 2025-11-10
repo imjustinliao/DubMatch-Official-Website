@@ -54,8 +54,8 @@ export function Home({ onWaitlistClick }: HomeProps) {
           <span className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/80">
             Why DubMatch?
           </span>
-          <h2 className="mt-6 text-3xl font-semibold text-white md:text-4xl">We design for real chemistry</h2>
-          <article className="relative mx-auto mt-12 flex h-[320px] max-w-2xl flex-col justify-center rounded-[32px] border border-white/20 bg-white/5 px-8 py-12 text-left text-white shadow-soft backdrop-blur">
+          <h2 className="mt-6 text-3xl font-semibold text-white md:text-4xl">The end of dating apps.</h2>
+          <article className="relative mx-auto mt-12 flex h-[320px] max-w-2xl flex-col justify-center rounded-[32px] border border-white/20 bg-white/5 px-6 py-10 text-left text-white shadow-soft backdrop-blur sm:px-8 sm:py-12">
             <div
               className="pointer-events-none absolute inset-[-8px] rounded-[40px] opacity-80"
               style={{

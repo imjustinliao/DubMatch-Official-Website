@@ -10,7 +10,7 @@ export function Hero({ onWaitlistClick }: HeroProps) {
     <section className="relative isolate mt-[-132px] flex min-h-screen items-center justify-center overflow-hidden px-6 pb-24 pt-40 sm:pt-48">
       <div className="absolute inset-0">
         <img
-          src="https://images.squarespace-cdn.com/content/v1/63e2d1331365f23d2862b5c3/b753fc9a-6a0e-4692-8cfc-1b1568a74ee0/AA204CAD-2A76-432D-B06D-D1DB7D7B1530+-+Julia+Joy+Jruck%40UW.Edu.jpeg"
+          src="https://st2.depositphotos.com/19415244/50618/i/450/depositphotos_506181908-stock-photo-silhouette-romantic-couple-lovers-hug.jpg"
           alt="Students connecting on campus"
           className="h-full w-full object-cover"
         />

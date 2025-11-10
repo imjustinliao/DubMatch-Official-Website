@@ -1,18 +1,20 @@
 import { AmbientField } from '../components/AmbientField'
 import { useReveal } from '../hooks/useReveal'
+import justinAvatar from '../assets/justin.png'
+import andriyAvatar from '../assets/andriy.jpeg'
 
 const teamMembers = [
   {
     name: 'Justin Liao',
     role: 'Co-founder',
-    avatar: '/src/assets/justin.png',
+    avatar: justinAvatar,
     linkedin: 'https://www.linkedin.com/in/justin-liao23/',
     twitter: 'https://x.com/imjustinliao',
   },
   {
     name: 'Andriy Demyanyuk',
     role: 'Co-founder',
-    avatar: '/src/assets/andriy.jpeg',
+    avatar: andriyAvatar,
     linkedin: 'https://www.linkedin.com/in/andriyd/',
     twitter: 'https://twitter.com/andriydem',
   },

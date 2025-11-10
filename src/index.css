@@ -14,14 +14,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(165% 85% at 12% 12%, rgba(255, 255, 255, 0.55), transparent 55%),
-    radial-gradient(120% 120% at 72% 8%, rgba(155, 135, 255, 0.55), transparent 50%),
-    radial-gradient(140% 120% at 22% 92%, rgba(255, 122, 145, 0.65), transparent 48%),
-    radial-gradient(150% 130% at 88% 70%, rgba(255, 190, 122, 0.5), transparent 52%),
-    radial-gradient(140% 90% at 5% 55%, rgba(93, 8, 26, 0.58), transparent 70%),
-    radial-gradient(160% 140% at 92% 35%, rgba(255, 214, 165, 0.35), transparent 55%),
-    linear-gradient(135deg, #0a000a, #320114 33%, #280840 74%, #ffa1d9 120%);
+  background: url('./assets/background.jpg') center/cover no-repeat fixed;
   color: inherit;
 }
 
