@@ -159,6 +159,10 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
                 ))}
               </select>
             </Field>
+            <label className="flex items-center gap-3 text-sm font-medium text-[#5c1022]">
+              <input type="checkbox" name="notSingle" className="h-4 w-4" />
+              <span>I&apos;m not single (optional)</span>
+            </label>
             {errorMessage ? (
               <p className="text-sm font-medium text-[#be123c]">
                 {errorMessage}
