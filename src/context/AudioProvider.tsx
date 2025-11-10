@@ -1,6 +1,12 @@
 import type { ReactNode } from 'react'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-import trackUrl from '../assets/music-original.mp3'
+import trackOne from '../assets/music-original.mp3'
+import trackTwo from '../assets/ocean.mp3'
+import trackThree from '../assets/afterx.mp3'
+import trackFour from '../assets/love.mp3'
+import trackFive from '../assets/stuck.mp3'
+
+const TRACKS = [trackOne, trackTwo, trackThree, trackFour, trackFive]
 
 type AudioContextValue = {
   isMuted: boolean
@@ -9,14 +15,25 @@ type AudioContextValue = {
 
 const AudioContext = createContext<AudioContextValue | undefined>(undefined)
 
+const shuffle = <T,>(items: T[]) => {
+  for (let i = items.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[items[i], items[j]] = [items[j], items[i]]
+  }
+  return items
+}
+
 export function AudioProvider({ children }: { children: ReactNode }) {
+  const [playlist] = useState(() => shuffle([...TRACKS]))
+  const [currentIndex, setCurrentIndex] = useState(0)
+
   const audio = useMemo(() => {
-    const element = new Audio(trackUrl)
-    element.loop = true
+    const element = new Audio(playlist[0])
+    element.loop = false
     element.volume = 0.35
     element.preload = 'auto'
     return element
-  }, [])
+  }, [playlist])
 
   const [isMuted, setIsMuted] = useState(false)
 
@@ -48,13 +65,23 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         })
     }
 
+    audio.src = playlist[currentIndex]
+    audio.currentTime = 0
     attemptPlay()
 
     return () => {
       cleanup()
       audio.pause()
     }
-  }, [audio])
+  }, [audio, playlist, currentIndex])
+
+  useEffect(() => {
+    const handleEnded = () => {
+      setCurrentIndex((prev) => (prev + 1) % playlist.length)
+    }
+    audio.addEventListener('ended', handleEnded)
+    return () => audio.removeEventListener('ended', handleEnded)
+  }, [audio, playlist.length])
 
   useEffect(() => {
     audio.muted = isMuted

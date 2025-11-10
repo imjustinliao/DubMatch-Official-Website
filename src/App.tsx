@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar'
 import { WaitlistModal } from './components/WaitlistModal'
 import { About } from './pages/About'
 import { Home } from './pages/Home'
+import { NotSingle } from './pages/NotSingle'
 import { Contact } from './pages/Contact'
 
 function ScrollToTop() {
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/" element={<Home onWaitlistClick={openWaitlist} />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/not-single" element={<NotSingle onWaitlistClick={openWaitlist} />} />
         </Routes>
       </div>
       <Footer />

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { AppleBadge } from './AppleBadge'
 import { Countdown } from './Countdown'
 
@@ -27,14 +28,22 @@ export function Hero({ onWaitlistClick }: HeroProps) {
         <p className="mt-6 max-w-2xl text-lg text-[#fde5ef] drop-shadow-[0_12px_30px_rgba(0,0,0,0.7)] md:text-xl">
           Meet DubMatch. A dating app only for college students to meet the love of their lives. We're making in-person, serendipitous dating possible through location & personalized matchmaking.
         </p>
-        <button
-          type="button"
-          onClick={onWaitlistClick}
-          className="mt-12 inline-flex items-center rounded-full border border-white/70 bg-white px-10 py-4 text-sm font-semibold tracking-wide text-[#4b0c1c] shadow-[0_12px_30px_rgba(255,255,255,0.35)] transition hover:-translate-y-0.5 hover:text-[#ffd89c] hover:shadow-[0_20px_45px_rgba(255,255,255,0.65)]"
-        >
-          <AppleBadge />
-          Join Waitlist
-        </button>
+        <div className="mt-12 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <button
+            type="button"
+            onClick={onWaitlistClick}
+            className="inline-flex items-center justify-center rounded-full border border-white/70 bg-white px-10 py-4 text-sm font-semibold tracking-wide text-[#4b0c1c] shadow-[0_12px_30px_rgba(255,255,255,0.35)] transition hover:-translate-y-0.5 hover:text-[#ffd89c] hover:shadow-[0_20px_45px_rgba(255,255,255,0.65)]"
+          >
+            <AppleBadge />
+            Join Waitlist
+          </button>
+          <Link
+            to="/not-single"
+            className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 px-10 py-4 text-sm font-semibold text-white shadow-[inset_0_0_20px_rgba(255,255,255,0.2)] transition hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(255,255,255,0.45)]"
+          >
+            I&apos;m not single
+          </Link>
+        </div>
         <div className="mt-16">
           <Countdown targetDate="2026-02-14T08:00:00Z" variant="hero" />
         </div>
