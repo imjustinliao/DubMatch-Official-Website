@@ -3,23 +3,27 @@ import { AppleBadge } from '../components/AppleBadge'
 import { Countdown } from '../components/Countdown'
 import { Hero } from '../components/Hero'
 import { HowItWorks } from '../components/HowItWorks'
+import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { useReveal } from '../hooks/useReveal'
 
 const reasons = [
   {
-    title: 'Hyper-personalized AI matchmaking',
+    title: 'Personalized AI matchmaking',
     description:
-      'Talk to our ChatGPT-grade concierge about the vibe you want. Share goals, quirks, even upload a photo of your crush so the AI understands who you actually like.',
+      'We built DubMatch to go beyond surface-level matching. Our AI works like ChatGPT, where you can literally tell it who you’re into, what you care about, and even upload a photo of your crush so it understands your vibe and preferences on a deeper level.',
+    gradient: 'linear-gradient(135deg, rgba(255,160,122,0.9), rgba(255,78,80,0.85))',
   },
   {
-    title: 'Built only for college students',
+    title: 'Meeting IRL > Matching',
     description:
-      'DubMatch is campus-only. We skip swiping and small talk so you can feel the chemistry in person with people who share your classrooms and clubs.',
+      'We’re a space made just for college students. No endless swiping or awkward small talk. Our goal is to get you off the screen and actually meeting people in real life to see if you truly vibe.',
+    gradient: 'linear-gradient(135deg, rgba(255,213,79,0.95), rgba(255,111,97,0.85))',
   },
   {
-    title: 'Engineered serendipity',
+    title: 'Serendipitous & Real',
     description:
-      'We choreograph IRL meetups that feel inevitable—like bumping into your future partner right after Calc lecture. Serendipity becomes the product.',
+      'We prioritize real, spontaneous connections. Picture this: you meet your crush right after your algebra class without preparing. That’s the kind of moment DubMatch is built for — authentic, exciting, and safe.',
+    gradient: 'linear-gradient(135deg, rgba(214,173,255,0.9), rgba(255,122,206,0.85))',
   },
 ] as const
 
@@ -29,6 +33,16 @@ type HomeProps = {
 
 export function Home({ onWaitlistClick }: HomeProps) {
   useReveal()
+  const [activeReason, setActiveReason] = useState(0)
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setActiveReason((prev) => (prev + 1) % reasons.length)
+    }, 3000)
+    return () => window.clearInterval(id)
+  }, [])
+
+  const currentReason = useMemo(() => reasons[activeReason], [activeReason])
 
   return (
     <main className="bg-transparent text-slate-100">
@@ -36,18 +50,46 @@ export function Home({ onWaitlistClick }: HomeProps) {
       <HowItWorks />
       <section className="relative isolate px-4 py-24" data-animate>
         <AmbientField variant="rose" />
-        <div className="relative mx-auto max-w-5xl rounded-[48px] border border-white/10 bg-[rgba(12,5,9,0.92)] px-6 py-20 text-center shadow-card backdrop-blur-xl md:px-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80">Why DubMatch</p>
-          <h2 className="mt-4 text-3xl font-semibold text-white md:text-4xl">Why we&apos;re not another dating app</h2>
-          <p className="mt-4 text-lg text-slate-300">
-            We care about real-life chemistry, not infinite feeds. Here&apos;s how we design for it.
-          </p>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {reasons.map((reason) => (
-              <article key={reason.title} className="rounded-[28px] border border-white/15 bg-white/5 px-6 py-8 text-left text-white shadow-soft transition hover:-translate-y-2">
-                <h3 className="text-xl font-semibold text-white">{reason.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-slate-200">{reason.description}</p>
-              </article>
+        <div className="relative mx-auto max-w-5xl px-6 py-12 text-center md:px-16">
+          <span className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/80">
+            Why DubMatch?
+          </span>
+          <h2 className="mt-6 text-3xl font-semibold text-white md:text-4xl">We design for real chemistry</h2>
+          <article className="relative mx-auto mt-12 flex h-[320px] max-w-2xl flex-col justify-center rounded-[32px] border border-white/20 bg-white/5 px-8 py-12 text-left text-white shadow-soft backdrop-blur">
+            <div
+              className="pointer-events-none absolute inset-[-8px] rounded-[40px] opacity-80"
+              style={{
+                background:
+                  'conic-gradient(from 0deg, rgba(255,255,255,0.6), rgba(255,87,110,0.55), rgba(255,255,255,0.6))',
+                filter: 'blur(8px)',
+              }}
+            />
+            <div className="absolute inset-0 rounded-[32px]" style={{ background: currentReason.gradient, opacity: 0.18 }} />
+            <div className="meteor-orbit">
+              {[0, 1, 2].map((dot) => (
+                <span
+                  key={dot}
+                  className="meteor-dot"
+                  style={{ '--delay': `${dot * 1.5}s`, '--radius': '180px' } as CSSProperties}
+                />
+              ))}
+            </div>
+            <div className="relative">
+              <h3 className="text-2xl font-semibold">{currentReason.title}</h3>
+              <p className="mt-4 text-base leading-relaxed text-white/90">{currentReason.description}</p>
+            </div>
+          </article>
+          <div className="mt-10 flex justify-center gap-3">
+            {reasons.map((reason, index) => (
+              <button
+                key={reason.title}
+                type="button"
+                onClick={() => setActiveReason(index)}
+                className={`h-2 rounded-full transition-all ${
+                  activeReason === index ? 'w-10 bg-white shadow-[0_4px_10px_rgba(0,0,0,0.45)]' : 'w-6 bg-white/50'
+                }`}
+                aria-label={`Show reason ${index + 1}`}
+              />
             ))}
           </div>
         </div>

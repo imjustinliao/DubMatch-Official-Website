@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import type { JSX } from 'react'
 
 const insights = [
@@ -18,10 +19,7 @@ const insights = [
   },
 ] as const
 
-const iconMap: Record<
-  (typeof insights)[number]['icon'],
-  JSX.Element
-> = {
+const iconMap: Record<(typeof insights)[number]['icon'], JSX.Element> = {
   sparkles: (
     <svg viewBox="0 0 24 24" className="h-6 w-6 text-lavender">
       <path
@@ -40,15 +38,22 @@ const iconMap: Record<
   ),
   compass: (
     <svg viewBox="0 0 24 24" className="h-6 w-6 text-lavender">
-      <path
-        fill="currentColor"
-        d="m12 2 4 8 8 4-8 4-4 8-4-8-8-4 8-4z"
-      />
+      <path fill="currentColor" d="m12 2 4 8 8 4-8 4-4 8-4-8-8-4 8-4z" />
     </svg>
   ),
 }
 
 export function Insights() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % insights.length)
+    }, 5000) // Change slide every 5 seconds to match animation
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className="bg-white" data-animate>
       <div className="mx-auto max-w-6xl px-6 py-20 md:px-8 md:py-28">
@@ -60,19 +65,41 @@ export function Insights() {
             DubMatch focuses on how you actually connect, not how much time you spend swiping.
           </p>
         </div>
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {insights.map((insight) => (
+        <div className="mt-16 grid min-h-[280px] gap-6 md:grid-cols-3">
+          {insights.map((insight, index) => (
             <article
               key={insight.title}
-              data-animate
-              className="group flex flex-col gap-4 rounded-3xl border border-slate-100 bg-white/90 p-8 shadow-soft transition hover:-translate-y-1 hover:shadow-card"
+              className={`group relative flex flex-col gap-4 rounded-3xl border border-slate-100 bg-white/90 p-8 shadow-soft transition-opacity duration-500 ${
+                index === activeIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                gridColumn: 'span 1',
+                display: index === activeIndex ? 'flex' : 'none',
+              }}
             >
+              {index === activeIndex && (
+                <div className="pointer-events-none absolute -inset-px rounded-3xl">
+                  <div className="absolute -top-2 -left-2 h-1/2 w-1/2 rounded-full bg-gradient-to-br from-white to-rose-400 blur-2xl animate-meteor" />
+                </div>
+              )}
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-lavender/10 text-lavender">
                 {iconMap[insight.icon]}
               </div>
               <h3 className="text-xl font-semibold text-slate-900">{insight.title}</h3>
               <p className="text-base text-slate-600">{insight.description}</p>
             </article>
+          ))}
+        </div>
+        <div className="mt-8 flex justify-center gap-2">
+          {insights.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className={`h-2 w-2 rounded-full transition-colors ${
+                index === activeIndex ? 'bg-slate-900' : 'bg-slate-300'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
         </div>
       </div>

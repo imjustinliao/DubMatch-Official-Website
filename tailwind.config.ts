@@ -26,6 +26,19 @@ const config: Config = {
         soft: '0 32px 64px -40px rgba(166, 140, 241, 0.6)',
         card: '0 24px 48px -36px rgba(54, 32, 109, 0.4)',
       },
+      animation: {
+        meteor: 'meteor 5s linear infinite',
+      },
+      keyframes: {
+        meteor: {
+          '0%': { transform: 'rotate(215deg) translateX(0)', opacity: '1' },
+          '70%': { opacity: '1' },
+          '100%': {
+            transform: 'rotate(215deg) translateX(-500px)',
+            opacity: '0',
+          },
+        },
+      },
     },
   },
   plugins: [],

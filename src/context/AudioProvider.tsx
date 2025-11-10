@@ -31,20 +31,24 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       }
     }
 
-    const startPlayback = async () => {
-      try {
-        await audio.play()
-      } catch (error) {
-        resume = () => {
-          audio.play().catch(() => {})
+    const attemptPlay = () => {
+      audio
+        .play()
+        .then(() => {
           cleanup()
-        }
-        window.addEventListener('pointerdown', resume)
-        window.addEventListener('keydown', resume)
-      }
+        })
+        .catch(() => {
+          if (!resume) {
+            resume = () => {
+              attemptPlay()
+            }
+            window.addEventListener('pointerdown', resume)
+            window.addEventListener('keydown', resume)
+          }
+        })
     }
 
-    startPlayback()
+    attemptPlay()
 
     return () => {
       cleanup()

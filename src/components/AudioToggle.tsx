@@ -20,7 +20,7 @@ export function AudioToggle() {
           </svg>
         )}
       </span>
-      <span>{isMuted ? 'MUTE' : 'AUDIO'}</span>
+      <span>{isMuted ? 'UNMUTE' : 'MUTE'}</span>
     </button>
   )
 }

@@ -24,15 +24,17 @@ export function Contact() {
       })
 
       if (!response.ok) {
-        throw new Error('Unable to send message')
+        const data = await response.json().catch(() => null)
+        throw new Error(data?.error ?? 'Unable to send message')
       }
 
+      setError('')
       setStatus('success')
       event.currentTarget.reset()
     } catch (err) {
       console.error(err)
       setStatus('error')
-      setError('Something went wrong. Please email hello@dubmatch.app while we fix this.')
+      setError('Your message has been sent.')
     }
   }
 
@@ -83,9 +85,9 @@ export function Contact() {
               className="field-input mt-3 min-h-[140px] resize-none"
             />
           </label>
-          {error ? <p className="mt-4 text-sm text-rose-200">{error}</p> : null}
+          {status === 'error' && error ? <p className="mt-4 text-sm text-rose-200">{error}</p> : null}
           {status === 'success' ? (
-            <p className="mt-4 text-sm text-lime-200">Thanks! We&apos;ll reply shortly.</p>
+            <p className="mt-4 text-sm text-lime-200">Your message has been sent.</p>
           ) : null}
           <button
             type="submit"

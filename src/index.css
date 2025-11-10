@@ -145,6 +145,43 @@ html {
   }
 }
 
+.meteor-orbit {
+  position: absolute;
+  inset: -18px;
+  pointer-events: none;
+}
+
+.meteor-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255,255,255,0.95), rgba(255,91,91,0.2));
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+  transform-origin: 0 0;
+  animation: meteorOrbit 10s linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes meteorOrbit {
+  0% {
+    transform: rotate(0deg) translateX(var(--radius, 150px));
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: rotate(360deg) translateX(var(--radius, 150px));
+    opacity: 0;
+  }
+}
+
 @keyframes starTwinkle {
   0% {
     transform: scale(0.7) translateY(0);
