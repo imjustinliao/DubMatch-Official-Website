@@ -8,7 +8,7 @@ export function ShareOverlay({ open, onClose }: ShareOverlayProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[998] flex items-center justify-center bg-black/80 px-4 text-white backdrop-blur"
+      className="fixed inset-0 z-[998] rounded-[50px] flex items-center justify-center bg-black/80 px-4 text-white backdrop-blur"
       onClick={onClose}
     >
       <button
