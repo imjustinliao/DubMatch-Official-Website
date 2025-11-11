@@ -86,8 +86,9 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
             <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#d94873]">
               Join the waitlist
             </p>
-            <h2 className="mt-2 text-2xl font-semibold text-slate-900">
-              Meet your crush during the date of 
+            <h2 className="mt-2">
+              <span className="block text-2xl font-semibold text-slate-900">Meet your crush on</span>
+              <span className="block text-2xl font-semibold text-slate-900">Valentines 2026 💕</span>
             </h2>
           </div>
           <button
@@ -159,10 +160,22 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
                 ))}
               </select>
             </Field>
-            <label className="flex items-center gap-3 text-sm font-medium text-[#5c1022]">
+            <div className="flex items-center justify-between">
+              <label className="flex items-center gap-3 text-sm font-medium text-[#5c1022]">
               <input type="checkbox" name="notSingle" className="h-4 w-4" />
               <span>I&apos;m not single (optional)</span>
-            </label>
+              </label>
+
+              <a
+              href="/#/not-single"
+              aria-label="More info about not single"
+              className="ml-3 inline-flex items-center justify-center text-[#5c1022] hover:text-[#8e1c38]"
+              >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+              </svg>
+              </a>
+            </div>
             {errorMessage ? (
               <p className="text-sm font-medium text-[#be123c]">
                 {errorMessage}
