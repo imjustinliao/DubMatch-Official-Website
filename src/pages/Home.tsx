@@ -17,7 +17,7 @@ const reasons = [
   {
     title: 'Meeting IRL > Matching',
     description:
-      'We’re a space made just for college students. No endless swiping or awkward small talk. Our goal is to get you off the screen and actually meeting people in real life to see if you truly vibe.',
+      'No endless swiping or awkward small talk. When you match with someone nearby, you get to meet them irl in real time. Our goal is to get you off the screen and actually meeting people in real life to see if you truly vibe.',
     gradient: 'linear-gradient(135deg, rgba(255,213,79,0.95), rgba(255,111,97,0.85))',
   },
   {
